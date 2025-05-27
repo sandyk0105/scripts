@@ -5,8 +5,8 @@ send_email(
     subject="NUANSA 2025 Ticket Purchase Confirmation",
     template_name="purchase.html",
     context={
-        "ticket_id": "NUA2025-001",
-        "seat_link": "https://tickets.nuansacp.org"
+        "ticket_code": "NUA2025-001",
+        "login_link": "https://tickets.nuansacp.org"
     }
 )
 
@@ -15,8 +15,8 @@ send_email(
     subject="NUANSA 2025 Seat Confirmation",
     template_name="seat_confirmation.html",
     context={
-        "ticket_id": "NUA2025-001",
-        "seat_link": "https://tickets.nuansacp.org",
+        "ticket_code": "NUA2025-001",
+        "share_link": "https://tickets.nuansacp.org",
         "seat_num": "EJAY-LoL234"
     }
 )
@@ -26,8 +26,8 @@ send_email(
     subject="Reminder: Choose Your Seat for NUANSA 2025",
     template_name="seat_select_reminder.html",
     context={
-        "ticket_id": "NUA2025-001",
-        "seat_link": "https://tickets.nuansacp.org"
+        "ticket_code": "NUA2025-001",
+        "login_link": "https://tickets.nuansacp.org"
     }
 )
 
@@ -36,7 +36,6 @@ send_email(
     subject="Thank You",
     template_name="farewell.html",
     context={
-        "ticket_id": "NUA2025-001",
-        "seat_link": "https://tickets.nuansacp.org"
+        "feedback_link": "https://feedback.nuansacp.org"
     }
 )
