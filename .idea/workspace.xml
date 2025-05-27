@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13d09bfa-4a02-49ec-9d1d-39c782783245" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/mailgun/mailer/templates/purchase.html" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/mailer/templates/purchase.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailgun/mailer/templates/seat_confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/mailer/templates/seat_confirmation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailgun/mailer/templates/seat_select_reminder.html" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/mailer/templates/seat_select_reminder.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailgun/test_send.py" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/test_send.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailgun/mailer/templates/images/image-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/mailer/templates/images/nus-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailgun/mailer/templates/images/image-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/mailer/templates/images/instagram-icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailgun/mailer/templates/images/image-3.png" beforeDir="false" afterPath="$PROJECT_DIR$/mailgun/mailer/templates/images/youtube-icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
