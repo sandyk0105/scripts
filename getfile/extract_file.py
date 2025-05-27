@@ -2,17 +2,14 @@ import imaplib
 import email
 import os
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
 
-import yaml # To load saved login credentials from a yaml file
+# Load environment variables from .env file
+load_dotenv()
 
-with open("credentials.yml") as f:
-    content = f.read()
-
-# From credentials.yml import user name and password
-my_credentials = yaml.load(content, Loader=yaml.FullLoader)
-
-# Load the user name and password from yaml file
-user, password = my_credentials["user"], my_credentials["password"]
+# Get credentials from environment variables
+user = os.getenv("EMAIL_USER")
+password = os.getenv("EMAIL_PASS")
 
 # URL for IMAP connection
 imap_url = 'imap.gmail.com'
