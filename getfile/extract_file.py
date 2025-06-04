@@ -6,30 +6,27 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+CSV_RECEIVER_EMAIL = os.getenv("CSV_RECEIVER_EMAIL")
+CSV_RECEIVER_PASSWORD = os.getenv("CSV_RECEIVER_PASSWORD")
+CSV_SENDER_EMAIL = os.getenv("CSV_SENDER_EMAIL")
 
-def extract_file(user, password):
+def extract_file(folder_path):
     imap_url = 'imap.gmail.com'
     my_mail = imaplib.IMAP4_SSL(imap_url)
 
     try:
-        my_mail.login(user, password)
+        my_mail.login(CSV_RECEIVER_EMAIL, CSV_RECEIVER_PASSWORD)
 
-        my_mail.select('Inbox')
+        # Assumes the mail does not go to spam
+        my_mail.select('INBOX', readonly=True)
 
         today = datetime.now()
         yesterday = today - timedelta(days=1)
         yesterday_date_string = yesterday.strftime("%Y-%m-%d")
 
-        # Create folder
-        folder_name = today.strftime(f"Mail_Attachments")
-        if not os.path.exists(folder_name):
-            os.makedirs(folder_name, mode=0o777)
-        folder_path = os.path.abspath(folder_name)
-
         # Filter
         # To be replaced with NUSFastPay's email
-        search_query = f'(X-GM-RAW "has:attachment after:{yesterday_date_string} from:{SENDER_EMAIL}")'
+        search_query = f'(X-GM-RAW "has:attachment after:{yesterday_date_string} from:{CSV_SENDER_EMAIL}")'
         _, data = my_mail.search(None, search_query)
 
         mail_id_list = data[0].split() # IDs of all emails we want to fetch
