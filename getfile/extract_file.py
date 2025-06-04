@@ -14,6 +14,8 @@ def extract_file(folder_path):
     imap_url = 'imap.gmail.com'
     my_mail = imaplib.IMAP4_SSL(imap_url)
 
+    files_extracted = []
+
     try:
         my_mail.login(CSV_RECEIVER_EMAIL, CSV_RECEIVER_PASSWORD)
 
@@ -52,6 +54,9 @@ def extract_file(folder_path):
                             filepath = os.path.join(folder_path, filename)
                             with open(filepath, 'wb') as f:
                                 f.write(part.get_payload(decode=True))
+                            files_extracted.append(filepath)
+        
+        return files_extracted
     except Exception as err:
         raise err
     finally:
