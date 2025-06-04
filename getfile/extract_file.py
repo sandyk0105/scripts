@@ -48,7 +48,7 @@ def extract_file(folder_path):
                             continue
 
                         filename = part.get_filename()
-                        if filename:
+                        if filename and filename.endswith(".csv"):
                             filepath = os.path.join(folder_path, filename)
                             with open(filepath, 'wb') as f:
                                 f.write(part.get_payload(decode=True))
