@@ -1,15 +1,18 @@
-from mailer.send_email import send_email
+from .mailer import send_email
+from .test_pdf_attachment import pdf1, pdf2
 
-send_email(
-    to_email="sandykristianwaluyo3@gmail.com",
+res = send_email(
+    to_email="rafaelky.dev@gmail.com",
     subject="NUANSA 2025 Ticket Purchase Confirmation",
     template_name="purchase.html",
     context={
         "ticket_code": "NUA2025-001",
         "login_link": "https://tickets.nuansacp.org"
     },
-    attachment_filename= "example.pdf"
+    attachments=[("pdf1.pdf", pdf1), ("pdf2.pdf", pdf2)],
 )
+print(res.status_code)
+print(res.content)
 
 # send_email(
 #     to_email="sandykristianwaluyo3@gmail.com",

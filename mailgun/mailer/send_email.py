@@ -17,32 +17,23 @@ ATTACHMENTS_DIR = os.path.join(BASE_DIR, "attachments")
 
 env = Environment(loader=FileSystemLoader(os.path.join(os.path.dirname(__file__), 'templates')))
 
-def send_email(to_email, subject, template_name, context, attachment_filename):
+def send_email(to_email, subject, template_name, context, attachments=None):
     template = env.get_template(template_name)
     html_content = template.render(context)
 
-    data={
+    data = {
         "from": FROM_EMAIL,
         "to": [to_email],
         "subject": subject,
         "html": html_content
     }
+    files = [("attachment", f) for f in attachments] if attachments is not None else None
 
-    if attachment_filename:
-        path = os.path.join(ATTACHMENTS_DIR, attachment_filename)
-        with open(path, "rb") as pdf:
-            files = [("attachment", pdf)]
-            response = requests.post(
-                f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
-                auth=("api", MAILGUN_API_KEY),
-                files=files,
-                data=data
-            )
-    else:
-        response = requests.post(
-            f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
-            auth=("api", MAILGUN_API_KEY),
-            data=data
-        )
+    response = requests.post(
+        f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
+        auth=("api", MAILGUN_API_KEY),
+        files=files,
+        data=data,
+    )
 
     return response
